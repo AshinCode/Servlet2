@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>Servlet-2</display-name>
+  
+  <!--在发送请求的时候，首先加载的就是web.xml  -->
+  
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <servlet>
+    <servlet-name>myservelt</servlet-name>  <!--自己起的一个名称  -->
+    <servlet-class>com.it666.servlet.FirstServlet</servlet-class>
+    <init-param>
+    	<param-name>haha</param-name>
+    	<param-value>123</param-value>
+    </init-param>
+    <load-on-startup>3</load-on-startup>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>myservelt</servlet-name>  <!--必须跟上面的名称一致  -->
+    <url-pattern>/aaa</url-pattern>  <!--path后面跟的名称  -->
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>myservelt2</servlet-name> 
+    <servlet-class>com.it666.servlet.SecondServlet</servlet-class>
+    <load-on-startup>4</load-on-startup>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>myservelt2</servlet-name>  
+    <url-pattern>/bbb</url-pattern> 
+  </servlet-mapping>
+  <!-- http://localhost:8080/Servlet-2/bbb
+  	其中/Servlet-2就是server.xml中的path,它的作用是找到项目WebContent的所在地
+  	/bbb就是项目中web.xml的url-pattern，如果没找到，而且没有缺省的，就会找全局配置下的web.xml缺省的url-patten，
+  	在全局配置当中有一个缺省的url-patten 对应的是default的Servlet，defaultServlet内部会到当前访问的工程根目录当中去找对应的名称的静态资源，
+  	如果有，就把里面的内容逐行读出。响应给浏览器。
+   -->
+</web-app>
